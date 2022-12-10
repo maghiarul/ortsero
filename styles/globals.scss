@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
+
+// font-family: 'Work Sans', sans-serif;
+// font-family: 'Poppins', sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  background: url("../public/background.svg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  .heading {
+    margin-top: 10em;
+    display: flex;
+    flex-direction: row;
+    .logo {
+      opacity: 0;
+      transform: translateY(15%);
+      animation: slideFromBottom 0.5s ease forwards;
+      animation-delay: 1s;
+    }
+    .title {
+      font-family: "Poppins", sans-serif;
+      h1 {
+        color: white;
+        font-size: 90px;
+        opacity: 0;
+        transform: translateY(15%);
+        animation: slideFromBottom 0.5s ease forwards;
+        animation-delay: 1.5s;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        border: 1px #19bc8b solid;
+        border-radius: 30px;
+        padding: 20px 30px;
+        width: 100%;
+        font-family: "Work Sans", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        opacity: 0;
+        transform: translateY(15%);
+        animation: slideFromBottom 0.5s ease forwards;
+        animation-delay: 2s;
+        color: var(--color);
+        transition: 0.25s;
+
+        &:hover,
+        &:focus {
+          border-color: var(--hover);
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.about-page {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  .about-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 900;
+      font-size: 70px;
+      margin-top: 1.5em;
+      color: #2F353A;
+    }
+    hr{
+      margin-top: 2em;
+      height: 5px;
+      border: none;
+      background-color: #2F353A;
+      border-radius: 20px;
+      width: 50%;
+    }
+  }
+}
+
+@keyframes slideFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(15%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+$colors: (
+  fill: #a972cb,
+  pulse: #ef6eae,
+  close: #ff7f82,
+  raise: #ffa260,
+  up: #e4cb58,
+  slide: #8fc866,
+  offset: #19bc8b,
+);
+
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{adjust-hue($color, 45deg)};
+  }
+}
+
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
+  }
+}
